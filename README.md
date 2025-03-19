@@ -1,39 +1,30 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# Dart TUI Framework  
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
+A **Terminal User Interface (TUI) framework for Dart**, designed to bring structured UI components to the terminal. This project is inspired by existing TUI frameworks in Golang (Charm) and Python (Textual), but aims to provide a **Dart-native solution**.  
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
+## 🚀 Progress So Far  
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+I have implemented the following features:  
 
-## Features
+- ✅ **Table Renderer**: Displays structured tables with borders in the terminal.  
+- ✅ **User Input Handling**: Captures and processes user input.  
+- ✅ **Text Styling Utilities**: Allows text formatting and color options (WIP).  
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+### **Example Table Rendering**  
 
-## Getting started
+I built a simple table renderer that prints structured tables in the terminal.  
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
-
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
+#### **Code Sample:**  
 
 ```dart
-const like = 'sample';
-```
+import 'package:dart_tui/dart_tui.dart';
 
-## Additional information
-
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+void main() {
+  TableRenderer table = TableRenderer();
+  table.printTable([
+    ["Name", "Age", "City"],
+    ["Alice", "30", "New York"],
+    ["Bob", "25", "San Francisco"],
+    ["Charlie", "35", "London"]
+  ]);
+}
