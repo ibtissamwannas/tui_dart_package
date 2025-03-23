@@ -1,30 +1,34 @@
-# Dart TUI Framework  
+# Dart TUI Framework 🖥️  
 
-A **Terminal User Interface (TUI) framework for Dart**, designed to bring structured UI components to the terminal. This project is inspired by existing TUI frameworks in Golang (Charm) and Python (Textual), but aims to provide a **Dart-native solution**.  
+**A terminal UI framework for Dart**, inspired by [**lipgloss**](https://github.com/charmbracelet/lipgloss) (Go) and [**textual**](https://github.com/Textualize/textual) (Python).  
+**Current Focus**: Composable text styling (Phase 1).  
+**Future Goal**: Full TUI components (inputs, checkboxes, layouts) with state management.  
 
-## 🚀 Progress So Far  
+---
 
-I have implemented the following features:  
+## ✨ Current Features (Text Styling)  
+✅ **Composable API**: Chain methods like `.bold().color().underline()`.  
+✅ **Named Colors**: `black`, `red`, `bright_blue`, etc. (16 predefined).  
+✅ **RGB Support**: True color for foreground and background.  
+✅ **Validation**: Errors for invalid color names or RGB values.  
+✅ **ANSI Escape Codes**: Unix/macOS/Linux terminal support.  
 
-- ✅ **Table Renderer**: Displays structured tables with borders in the terminal.  
-- ✅ **User Input Handling**: Captures and processes user input.  
-- ✅ **Text Styling Utilities**: Allows text formatting and color options (WIP).  
+---
 
-### **Example Table Rendering**  
+## 🚀 Future Plans (Aligned with Flutter Team’s Vision)  
+This project expands on the [**Flutter Team’s GSoC Idea**](https://github.com/dart-lang/sdk/blob/main/docs/gsoc/Dart-GSoC-2025-Project-Ideas.md) to bring TUI development to Dart.  
 
-I built a simple table renderer that prints structured tables in the terminal.  
+### **Planned Features**  
+| Feature                | Status     |  
+|------------------------|------------|  
+| Text Styling           | **In Progress**  |  
+| Input Components       | Planned 📅 |  
+| Checkboxes/Tables      | Planned 📅 |  
+| Terminal Layouts       | Planned 📅 |  
+| State Management       | Planned 📅 |  
+| Windows Compatibility  | Planned 📅 |  
 
-#### **Code Sample:**  
+### **Flutter Team’s Original Idea**  
+> *"Dart is already used to create GUI applications through Flutter. A package that makes TUI development easier (like Go’s `charm` or Python’s `textual`) would increase Dart’s adoption in CLI/DevOps tools. Expected outcome: A pub.dev package with terminal primitives (text styling, inputs, checkboxes, layouts) that integrates with Dart’s state management libraries."*
 
-```dart
-import 'package:dart_tui/dart_tui.dart';
-
-void main() {
-  TableRenderer table = TableRenderer();
-  table.printTable([
-    ["Name", "Age", "City"],
-    ["Alice", "30", "New York"],
-    ["Bob", "25", "San Francisco"],
-    ["Charlie", "35", "London"]
-  ]);
-}
+---
