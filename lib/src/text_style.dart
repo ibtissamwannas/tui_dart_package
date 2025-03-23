@@ -1,10 +1,45 @@
-class TextStyle {
-  static String bold(String text) => '\x1B[1m$text\x1B[0m';
-  static String italic(String text) => '\x1B[3m$text\x1B[0m';
-  static String underline(String text) => '\x1B[4m$text\x1B[0m';
+// text_style.dart
+import 'package:tui_dart/tui_dart.dart';
 
-  static String red(String text) => '\x1B[31m$text\x1B[0m';
-  static String green(String text) => '\x1B[32m$text\x1B[0m';
-  static String yellow(String text) => '\x1B[33m$text\x1B[0m';
-  static String blue(String text) => '\x1B[34m$text\x1B[0m';
+
+class TextStyle {
+  final String _text;
+  final List<String> _styles = [];
+
+  TextStyle(this._text) {
+    if (_text.isEmpty) throw ArgumentError('Text cannot be empty');
+  }
+
+  // --- Style Methods ---
+  TextStyle bold() => _addStyle('1');
+  TextStyle italic() => _addStyle('3');
+  TextStyle underline() => _addStyle('4');
+  TextStyle strikethrough() => _addStyle('9');
+  TextStyle inverse() => _addStyle('7');
+
+  // --- Color Methods ---
+  TextStyle color(String colorName) {
+    final colorCode = TextColors.getForegroundColorCode(colorName);
+    return _addStyle('38;5;$colorCode');
+  }
+
+  TextStyle colorRGB(int r, int g, int b) {
+    return _addStyle(TextColors.rgbColor(r, g, b));
+  }
+
+  TextStyle backgroundColorRGB(int r, int g, int b) {
+    return _addStyle(TextColors.rgbBackgroundColor(r, g, b));
+  }
+
+  // --- Rendering ---
+  String render() {
+    if (_styles.isEmpty) return _text;
+    return '\x1b[${_styles.join(';')}m$_text\x1b[0m';
+  }
+
+  // --- Helpers ---
+  TextStyle _addStyle(String code) {
+    _styles.add(code);
+    return this;
+  }
 }

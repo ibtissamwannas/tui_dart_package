@@ -3,7 +3,6 @@
 /// More dartdocs go here.
 library;
 
-export 'src/tui_dart_base.dart';
 export 'src/text_style.dart';
-export 'src/table.dart';
-export 'src/input.dart';
+export 'src/text_colors.dart';
+export 'src/tui_dart_base.dart';

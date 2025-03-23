@@ -1,17 +1,30 @@
 import 'package:tui_dart/tui_dart.dart';
 
 void main() {
-  print(TextStyle.green(TextStyle.bold("Welcome to Dart TUI!")));
+  try {
+    // Basic text styling
+    final hello = TextStyle("Hello, Dart TUI!").bold().color("yellow").render();
+    print(hello);
 
-  var table = TableRenderer();
-  table.printTable([
-    ["Name", "Age", "City"],
-    ["Alice", "30", "New York"],
-    ["Bob", "25", "San Francisco"],
-    ["Charlie", "35", "London"],
-  ]);
+    // RGB foreground and background
+    final rgbDemo = TextStyle("RGB Text")
+        .colorRGB(255, 100, 50)
+        .backgroundColorRGB(0, 200, 150)
+        .underline()
+        .render();
+    print(rgbDemo);
 
-  var input = InputHandler();
-  String name = input.prompt("Enter your name:");
-  print("Hello, ${TextStyle.bold(name)}!");
+    // Combined styles
+    final warning = TextStyle("WARNING")
+        .bold()
+        .color("bright_red")
+        .inverse() // Swaps foreground/background
+        .render();
+    print(warning);
+
+    // Invalid color example (uncomment to test error)
+    // final invalid = TextStyle("Oops").color("pink").render();
+  } on ArgumentError catch (e) {
+    print("Error: ${e.message}");
+  }
 }
